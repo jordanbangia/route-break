@@ -28,6 +28,9 @@ func main() {
 			return
 		}
 
+		// TODO: errgroup is good for running and collecting these goroutines
+		// but only one error comes out of this, realistically need all the errors
+		// to determine where things are breaking
 		group, groupCtx := errgroup.WithContext(ctx)
 		for _, address := range addresses {
 			group.Go(func() error {
